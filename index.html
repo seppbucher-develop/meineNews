@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>News</title>
+<meta name="theme-color" content="#0b1220" />
+
+<style>
+  :root {
+    --bg: #0b1220;
+    --panel: rgba(255,255,255,0.05);
+    --panel-border: rgba(255,255,255,0.1);
+    --text: #eaf2fb;
+    --text-dim: rgba(234,242,251,0.55);
+    --text-dimmer: rgba(234,242,251,0.35);
+    --accent: #6fd3ff;
+    --accent-bg: rgba(111,211,255,0.15);
+    --ok: #4ade80;
+    --err: #f87171;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 20px 16px 60px; }
+  header { margin-bottom: 18px; }
+  h1 { font-size: 24px; font-weight: 800; margin: 0 0 2px; display:flex; align-items:center; gap:8px; }
+  .meta { font-size: 12px; color: var(--text-dim); }
+
+  .tabs { display:flex; gap:8px; margin: 16px 0 12px; overflow-x:auto; padding-bottom:2px; }
+  .tab {
+    flex: 0 0 auto; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--panel-border);
+    background: var(--panel); color: var(--text-dim); font-size:14px; font-weight:600; cursor:pointer;
+  }
+  .tab.active { background: var(--accent-bg); border-color: var(--accent); color: var(--accent); }
+
+  .periods { display:flex; gap:6px; flex-wrap:wrap; margin-bottom: 14px; }
+  .period-btn {
+    padding: 6px 12px; border-radius: 8px; border: 1px solid var(--panel-border);
+    background: transparent; color: var(--text-dim); font-size:12.5px; cursor:pointer;
+  }
+  .period-btn.active { background: var(--panel); color: var(--text); border-color: var(--accent); }
+
+  .custom-range { display:none; gap:8px; align-items:center; margin: 4px 0 14px; font-size: 13px; color: var(--text-dim); flex-wrap: wrap; }
+  .custom-range.show { display:flex; }
+  .custom-range input[type="date"] {
+    background: var(--panel); border:1px solid var(--panel-border); color: var(--text);
+    border-radius:6px; padding:5px 8px; font-size:13px;
+  }
+  .custom-range button {
+    background: var(--accent-bg); border:1px solid var(--accent); color: var(--accent);
+    border-radius:6px; padding:5px 10px; font-size:13px; cursor:pointer;
+  }
+
+  .card {
+    background: var(--panel); border:1px solid var(--panel-border); border-radius: 14px;
+    padding: 16px; margin-bottom: 14px;
+  }
+  .card h2 { font-size: 13px; text-transform:uppercase; letter-spacing:1px; color: var(--text-dim); margin: 0 0 10px; }
+  .summary-text { font-size: 15px; line-height:1.55; white-space: pre-line; }
+  .summary-empty { font-size: 13.5px; color: var(--text-dimmer); font-style: italic; }
+  .summary-badge {
+    display:inline-block; font-size: 10.5px; color: var(--text-dimmer); margin-top: 10px;
+  }
+
+  .article-list { list-style:none; margin:0; padding:0; }
+  .article-list li {
+    padding: 10px 0; border-top: 1px solid var(--panel-border);
+  }
+  .article-list li:first-child { border-top:none; padding-top:0; }
+  .article-list a { color: var(--text); text-decoration:none; font-weight:600; font-size: 14px; }
+  .article-list a:hover { color: var(--accent); }
+  .article-meta { font-size: 11.5px; color: var(--text-dim); margin-top: 3px; }
+  .article-snippet { font-size: 12.5px; color: var(--text-dim); margin-top: 4px; line-height:1.4; }
+
+  footer { margin-top: 24px; font-size: 11.5px; color: var(--text-dimmer); }
+  .source-grid { display:flex; flex-wrap:wrap; gap: 6px; margin-top: 8px; }
+  .source-pill {
+    display:flex; align-items:center; gap:5px; padding: 3px 9px; border-radius: 999px;
+    border:1px solid var(--panel-border); font-size: 11px;
+  }
+  .dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+  .dot.ok { background: var(--ok); }
+  .dot.err { background: var(--err); }
+
+  .status-line { font-size: 12.5px; color: var(--text-dimmer); margin-top: 6px; }
+  .load-error { color: var(--err); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>📰 News</h1>
+    <div class="meta" id="meta">Lade Daten…</div>
+  </header>
+
+  <div class="tabs" id="tabs"></div>
+  <div class="periods" id="periods"></div>
+  <div class="custom-range" id="customRange">
+    <label>von <input type="date" id="rangeFrom" /></label>
+    <label>bis <input type="date" id="rangeTo" /></label>
+    <button id="rangeApply">Anzeigen</button>
+  </div>
+
+  <div id="content"></div>
+
+  <footer>
+    <div>Quellen</div>
+    <div class="source-grid" id="sourceGrid"></div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var state = { data: null, topicId: null, periodId: "heute", customFrom: null, customTo: null };
+
+  function el(tag, attrs, children) {
+    var e = document.createElement(tag);
+    if (attrs) for (var k in attrs) {
+      if (k === "class") e.className = attrs[k];
+      else if (k === "html") e.innerHTML = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    (children || []).forEach(function (c) { if (c) e.appendChild(c); });
+    return e;
+  }
+  function text(s) { return document.createTextNode(s); }
+
+  function fmtDate(iso) {
+    try {
+      return new Date(iso).toLocaleDateString("de-CH", { day: "2-digit", month: "2-digit", year: "numeric" });
+    } catch (e) { return iso; }
+  }
+  function fmtDateTime(iso) {
+    try {
+      return new Date(iso).toLocaleString("de-CH", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
+    } catch (e) { return iso; }
+  }
+  function ymd(iso) { return iso.slice(0, 10); }
+
+  function render() {
+    var data = state.data;
+    if (!data) return;
+
+    document.getElementById("meta").textContent = data.generatedAt
+      ? "Zuletzt aktualisiert: " + fmtDateTime(data.generatedAt) + " · " + data.articles.length + " Artikel im Archiv (" + data.archiveDays + " Tage)"
+      : "Noch keine Daten — der Fetch-News-Workflow wurde noch nicht ausgeführt.";
+
+    // Tabs
+    var tabsEl = document.getElementById("tabs");
+    tabsEl.innerHTML = "";
+    data.topics.forEach(function (t) {
+      var tab = el("div", { class: "tab" + (t.id === state.topicId ? " active" : "") }, [text(t.name)]);
+      tab.addEventListener("click", function () { state.topicId = t.id; render(); });
+      tabsEl.appendChild(tab);
+    });
+
+    // Period buttons
+    var periodsEl = document.getElementById("periods");
+    periodsEl.innerHTML = "";
+    data.periods.forEach(function (p) {
+      var btn = el("div", { class: "period-btn" + (state.periodId === p.id ? " active" : "") }, [text(p.label)]);
+      btn.addEventListener("click", function () { state.periodId = p.id; toggleCustomRange(false); render(); });
+      periodsEl.appendChild(btn);
+    });
+    var customBtn = el("div", { class: "period-btn" + (state.periodId === "custom" ? " active" : "") }, [text("Frei wählen…")]);
+    customBtn.addEventListener("click", function () { state.periodId = "custom"; toggleCustomRange(true); render(); });
+    periodsEl.appendChild(customBtn);
+
+    renderContent();
+    renderSources();
+  }
+
+  function toggleCustomRange(show) {
+    document.getElementById("customRange").classList.toggle("show", show);
+  }
+
+  function topicArticles(topicId) {
+    return state.data.articles.filter(function (a) { return a.topics.indexOf(topicId) !== -1; });
+  }
+
+  function renderContent() {
+    var data = state.data;
+    var content = document.getElementById("content");
+    content.innerHTML = "";
+    if (!state.topicId && data.topics.length) state.topicId = data.topics[0].id;
+    var topic = data.topics.filter(function (t) { return t.id === state.topicId; })[0];
+    if (!topic) { content.appendChild(el("p", { class: "load-error" }, [text("Kein Thema konfiguriert.")])); return; }
+
+    var articles = topicArticles(topic.id);
+    var summaryCard = el("div", { class: "card" });
+    var listArticles = [];
+
+    if (state.periodId === "custom") {
+      var from = state.customFrom, to = state.customTo;
+      summaryCard.appendChild(el("h2", null, [text("Übersicht — " + (from || "?") + " bis " + (to || "?"))]));
+      var inRange = articles.filter(function (a) { var d = ymd(a.publishedAt); return (!from || d >= from) && (!to || d <= to); });
+      listArticles = inRange;
+      if (!from || !to) {
+        summaryCard.appendChild(el("div", { class: "summary-empty" }, [text("Bitte Start- und Enddatum wählen.")]));
+      } else if (inRange.length === 0) {
+        summaryCard.appendChild(el("div", { class: "summary-empty" }, [text("Keine Artikel in diesem Zeitraum.")]));
+      } else {
+        var bySource = {};
+        inRange.forEach(function (a) { (bySource[a.sourceName] = bySource[a.sourceName] || []).push(a); });
+        var lines = Object.keys(bySource).map(function (src) {
+          return src + ": " + bySource[src].map(function (a) { return a.title; }).join("; ");
+        });
+        summaryCard.appendChild(el("div", { class: "summary-text" }, [text(lines.join("\n\n"))]));
+        summaryCard.appendChild(el("div", { class: "summary-badge" }, [
+          text("Automatisch gruppierte Überschriften — für frei gewählte Zeiträume gibt es keine KI-Zusammenfassung, nur für die Standard-Zeiträume oben."),
+        ]));
+      }
+    } else {
+      var period = data.periods.filter(function (p) { return p.id === state.periodId; })[0];
+      var summary = (data.summaries[topic.id] || {})[state.periodId];
+      summaryCard.appendChild(el("h2", null, [text((period ? period.label : state.periodId) + " — " + topic.name)]));
+      if (!period || !summary) {
+        summaryCard.appendChild(el("div", { class: "summary-empty" }, [
+          text("Noch keine Daten — der Fetch-News-Workflow wurde noch nicht ausgeführt."),
+        ]));
+      } else if (summary.text) {
+        summaryCard.appendChild(el("div", { class: "summary-text" }, [text(summary.text)]));
+        summaryCard.appendChild(el("div", { class: "summary-badge" }, [
+          text("KI-Zusammenfassung über " + summary.articleCount + " Artikel · " + (summary.model || "")),
+        ]));
+      } else {
+        summaryCard.appendChild(el("div", { class: "summary-empty" }, [
+          text(summary.reason === "kein ANTHROPIC_API_KEY hinterlegt"
+            ? "Keine KI-Zusammenfassung verfügbar (kein API-Key hinterlegt)."
+            : summary.reason === "keine Artikel im Zeitraum"
+            ? "Keine Artikel zu diesem Thema im gewählten Zeitraum."
+            : "Zusammenfassung nicht verfügbar (" + (summary.reason || "unbekannter Grund") + ")."),
+        ]));
+      }
+      listArticles = period
+        ? articles.filter(function (a) { var d = ymd(a.publishedAt); return d >= period.from && d <= period.to; })
+        : [];
+    }
+
+    content.appendChild(summaryCard);
+    renderArticleList(content, listArticles);
+  }
+
+  function renderArticleList(content, articles) {
+    if (!articles.length) return;
+    var listCard = el("div", { class: "card" });
+    listCard.appendChild(el("h2", null, [text("Artikel (" + articles.length + ")")]));
+    var ul = el("ul", { class: "article-list" });
+    articles
+      .slice()
+      .sort(function (a, b) { return a.publishedAt < b.publishedAt ? 1 : -1; })
+      .forEach(function (a) {
+        var li = el("li", null, [
+          el("a", { href: a.link, target: "_blank", rel: "noopener" }, [text(a.title)]),
+          el("div", { class: "article-meta" }, [text(a.sourceName + " · " + fmtDate(a.publishedAt))]),
+        ]);
+        if (a.snippet) li.appendChild(el("div", { class: "article-snippet" }, [text(a.snippet)]));
+        ul.appendChild(li);
+      });
+    listCard.appendChild(ul);
+    content.appendChild(listCard);
+  }
+
+  function renderSources() {
+    var grid = document.getElementById("sourceGrid");
+    grid.innerHTML = "";
+    state.data.sources.forEach(function (s) {
+      var ok = s.status && s.status.ok;
+      grid.appendChild(el("div", { class: "source-pill" }, [
+        el("span", { class: "dot " + (ok ? "ok" : "err") }),
+        text(s.name + (ok ? "" : " (Feed nicht erreichbar)")),
+      ]));
+    });
+  }
+
+  document.getElementById("rangeApply").addEventListener("click", function () {
+    state.customFrom = document.getElementById("rangeFrom").value || null;
+    state.customTo = document.getElementById("rangeTo").value || null;
+    render();
+  });
+
+  fetch("data/news.json", { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function (data) {
+      state.data = data;
+      render();
+    })
+    .catch(function (err) {
+      document.getElementById("content").innerHTML = "";
+      document.getElementById("content").appendChild(
+        el("div", { class: "card" }, [
+          el("p", { class: "load-error" }, [text("Daten konnten nicht geladen werden: " + err.message)]),
+          el("p", { class: "status-line" }, [text("Wurde der Fetch-News-Workflow schon ausgeführt (Actions-Tab → \"Fetch News\" → \"Run workflow\")?")]),
+        ])
+      );
+    });
+})();
+</script>
+</body>
+</html>

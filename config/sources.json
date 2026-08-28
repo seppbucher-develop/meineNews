@@ -1,0 +1,22 @@
+[
+  {
+    "id": "nzz",
+    "name": "NZZ",
+    "rss": "https://www.nzz.ch/recent.rss"
+  },
+  {
+    "id": "fuw",
+    "name": "Finanz und Wirtschaft",
+    "rss": "https://www.fuw.ch/feed/"
+  },
+  {
+    "id": "20min",
+    "name": "20 Minuten",
+    "rss": "https://partner-feeds.20min.ch/rss/20minuten"
+  },
+  {
+    "id": "pomona",
+    "name": "Pomona (Wallis)",
+    "rss": "https://pomona.ch/rss"
+  }
+]

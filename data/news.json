@@ -1,0 +1,13 @@
+{
+  "generatedAt": null,
+  "timezone": "Europe/Zurich",
+  "archiveDays": 90,
+  "sources": [],
+  "topics": [
+    { "id": "gleitschirm", "name": "Gleitschirm", "keywords": ["gleitschirm"] },
+    { "id": "goms", "name": "Goms", "keywords": ["goms"] }
+  ],
+  "periods": [],
+  "articles": [],
+  "summaries": {}
+}

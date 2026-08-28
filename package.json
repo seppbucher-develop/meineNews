@@ -1,0 +1,14 @@
+{
+  "name": "meinenews",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Themen-News-Aggregator (z.B. Gleitschirm, Goms) mit KI-Zusammenfassung über mehrere Quellen",
+  "type": "module",
+  "scripts": {
+    "fetch-news": "node scripts/fetch-news.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.122.0",
+    "rss-parser": "^3.13.0"
+  }
+}
