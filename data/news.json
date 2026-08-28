@@ -1,13 +1,195 @@
 {
-  "generatedAt": null,
+  "generatedAt": "2026-08-28T15:09:22.448Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
-  "sources": [],
-  "topics": [
-    { "id": "gleitschirm", "name": "Gleitschirm", "keywords": ["gleitschirm"] },
-    { "id": "goms", "name": "Goms", "keywords": ["goms"] }
+  "sources": [
+    {
+      "id": "nzz",
+      "name": "NZZ",
+      "rss": "https://www.nzz.ch/recent.rss",
+      "status": {
+        "ok": true,
+        "error": null,
+        "itemCount": 15,
+        "checkedAt": "2026-08-28T15:09:20.027Z"
+      }
+    },
+    {
+      "id": "fuw",
+      "name": "Finanz und Wirtschaft",
+      "rss": "https://www.fuw.ch/feed/",
+      "status": {
+        "ok": false,
+        "error": "Too many redirects",
+        "itemCount": 0,
+        "checkedAt": "2026-08-28T15:09:21.005Z"
+      }
+    },
+    {
+      "id": "20min",
+      "name": "20 Minuten",
+      "rss": "https://partner-feeds.20min.ch/rss/20minuten",
+      "status": {
+        "ok": true,
+        "error": null,
+        "itemCount": 113,
+        "checkedAt": "2026-08-28T15:09:21.895Z"
+      }
+    },
+    {
+      "id": "pomona",
+      "name": "Pomona (Wallis)",
+      "rss": "https://pomona.ch/rss",
+      "status": {
+        "ok": false,
+        "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
+        "itemCount": 0,
+        "checkedAt": "2026-08-28T15:09:22.447Z"
+      }
+    }
   ],
-  "periods": [],
-  "articles": [],
-  "summaries": {}
+  "topics": [
+    {
+      "id": "gleitschirm",
+      "name": "Gleitschirm",
+      "keywords": [
+        "gleitschirm",
+        "gleitschirmfliegen",
+        "gleitschirmflieger",
+        "paragliding",
+        "paraglider",
+        "hängegleiter",
+        "gleitschirmpilot"
+      ]
+    },
+    {
+      "id": "goms",
+      "name": "Goms",
+      "keywords": [
+        "goms",
+        "obergoms",
+        "untergoms",
+        "ulrichen",
+        "oberwald",
+        "münster-geschinen",
+        "reckingen-gluringen",
+        "grafschaft vs",
+        "bellwald",
+        "fiesch",
+        "ernen"
+      ]
+    }
+  ],
+  "periods": [
+    {
+      "id": "heute",
+      "label": "Heute",
+      "from": "2026-08-28",
+      "to": "2026-08-28"
+    },
+    {
+      "id": "gestern",
+      "label": "Gestern",
+      "from": "2026-08-27",
+      "to": "2026-08-27"
+    },
+    {
+      "id": "diese_woche",
+      "label": "Diese Woche",
+      "from": "2026-08-24",
+      "to": "2026-08-28"
+    },
+    {
+      "id": "letzte_woche",
+      "label": "Letzte Woche",
+      "from": "2026-08-17",
+      "to": "2026-08-23"
+    },
+    {
+      "id": "letzte_30_tage",
+      "label": "Letzte 30 Tage",
+      "from": "2026-07-30",
+      "to": "2026-08-28"
+    }
+  ],
+  "articles": [
+    {
+      "title": "Sie hätte im Meer versinken sollen, jetzt wurde sie nach einem Monat auf See gerettet: Die Odyssee der neuesten SpaceX-Rakete",
+      "link": "https://www.nzz.ch/wissenschaft/sie-haette-im-meer-versinken-sollen-jetzt-wurde-sie-nach-einem-monat-auf-see-gerettet-die-odyssee-der-neuesten-spacex-rakete-ld.10021432",
+      "publishedAt": "2026-08-28T14:52:55.000Z",
+      "snippet": "Ein Starship-Raumschiff trieb wochenlang im Ozean, bis die Firma SpaceX es mit einer improvisierten Rettungsaktion geborgen hat. Denn aus dem Wrack kann sie einiges lernen.",
+      "sourceId": "nzz",
+      "sourceName": "NZZ",
+      "topics": [
+        "goms"
+      ]
+    },
+    {
+      "title": "7 Franken pro Stück: Japanisches Brot erobert die Schweiz",
+      "link": "https://www.20min.ch/story/shokupan-hype-warum-das-japanische-milchbrot-die-schweiz-erobert-103621801",
+      "publishedAt": "2026-08-25T14:43:10.000Z",
+      "snippet": "Fluffig, milchig und leicht süss: Japanisches Weissbrot begeistert nicht nur im Fernen Osten, sondern auch hierzulande. Zürcher Bäckereien und Cafés verraten, was das Trendbrot so besonders macht und worauf es bei der Herstellung ankommt.",
+      "sourceId": "20min",
+      "sourceName": "20 Minuten",
+      "topics": [
+        "goms"
+      ]
+    }
+  ],
+  "summaries": {
+    "gleitschirm": {
+      "heute": {
+        "text": null,
+        "reason": "kein ANTHROPIC_API_KEY hinterlegt",
+        "articleCount": 0
+      },
+      "gestern": {
+        "text": null,
+        "reason": "kein ANTHROPIC_API_KEY hinterlegt",
+        "articleCount": 0
+      },
+      "diese_woche": {
+        "text": null,
+        "reason": "kein ANTHROPIC_API_KEY hinterlegt",
+        "articleCount": 0
+      },
+      "letzte_woche": {
+        "text": null,
+        "reason": "kein ANTHROPIC_API_KEY hinterlegt",
+        "articleCount": 0
+      },
+      "letzte_30_tage": {
+        "text": null,
+        "reason": "kein ANTHROPIC_API_KEY hinterlegt",
+        "articleCount": 0
+      }
+    },
+    "goms": {
+      "heute": {
+        "text": null,
+        "reason": "kein ANTHROPIC_API_KEY hinterlegt",
+        "articleCount": 1
+      },
+      "gestern": {
+        "text": null,
+        "reason": "kein ANTHROPIC_API_KEY hinterlegt",
+        "articleCount": 0
+      },
+      "diese_woche": {
+        "text": null,
+        "reason": "kein ANTHROPIC_API_KEY hinterlegt",
+        "articleCount": 2
+      },
+      "letzte_woche": {
+        "text": null,
+        "reason": "kein ANTHROPIC_API_KEY hinterlegt",
+        "articleCount": 0
+      },
+      "letzte_30_tage": {
+        "text": null,
+        "reason": "kein ANTHROPIC_API_KEY hinterlegt",
+        "articleCount": 2
+      }
+    }
+  }
 }
