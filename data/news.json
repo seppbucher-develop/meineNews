@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-28T15:09:22.448Z",
+  "generatedAt": "2026-08-28T21:58:47.683Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -11,7 +11,7 @@
         "ok": true,
         "error": null,
         "itemCount": 15,
-        "checkedAt": "2026-08-28T15:09:20.027Z"
+        "checkedAt": "2026-08-28T21:58:45.558Z"
       }
     },
     {
@@ -22,7 +22,7 @@
         "ok": false,
         "error": "Too many redirects",
         "itemCount": 0,
-        "checkedAt": "2026-08-28T15:09:21.005Z"
+        "checkedAt": "2026-08-28T21:58:46.659Z"
       }
     },
     {
@@ -30,10 +30,10 @@
       "name": "20 Minuten",
       "rss": "https://partner-feeds.20min.ch/rss/20minuten",
       "status": {
-        "ok": true,
-        "error": null,
-        "itemCount": 113,
-        "checkedAt": "2026-08-28T15:09:21.895Z"
+        "ok": false,
+        "error": "Invalid time value",
+        "itemCount": 0,
+        "checkedAt": "2026-08-28T21:58:47.210Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-08-28T15:09:22.447Z"
+        "checkedAt": "2026-08-28T21:58:47.683Z"
       }
     }
   ],
