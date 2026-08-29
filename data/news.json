@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T16:03:45.692Z",
+  "generatedAt": "2026-08-29T16:34:29.897Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -11,7 +11,7 @@
         "ok": true,
         "error": null,
         "itemCount": 16,
-        "checkedAt": "2026-08-29T16:03:43.590Z"
+        "checkedAt": "2026-08-29T16:34:08.020Z"
       }
     },
     {
@@ -20,9 +20,9 @@
       "rss": "https://www.fuw.ch/feed/",
       "status": {
         "ok": false,
-        "error": "Too many redirects",
+        "error": "Hard timeout nach 20000ms (Prozess beendet)",
         "itemCount": 0,
-        "checkedAt": "2026-08-29T16:03:44.648Z"
+        "checkedAt": "2026-08-29T16:34:28.024Z"
       }
     },
     {
@@ -32,8 +32,8 @@
       "status": {
         "ok": true,
         "error": null,
-        "itemCount": 110,
-        "checkedAt": "2026-08-29T16:03:45.192Z"
+        "itemCount": 108,
+        "checkedAt": "2026-08-29T16:34:29.197Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-08-29T16:03:45.687Z"
+        "checkedAt": "2026-08-29T16:34:29.892Z"
       }
     }
   ],
@@ -112,30 +112,7 @@
       "to": "2026-08-29"
     }
   ],
-  "articles": [
-    {
-      "title": "Sie hätte im Meer versinken sollen, jetzt wurde sie nach einem Monat auf See gerettet: Die Odyssee der neuesten SpaceX-Rakete",
-      "link": "https://www.nzz.ch/wissenschaft/sie-haette-im-meer-versinken-sollen-jetzt-wurde-sie-nach-einem-monat-auf-see-gerettet-die-odyssee-der-neuesten-spacex-rakete-ld.10021432",
-      "publishedAt": "2026-08-28T14:52:55.000Z",
-      "snippet": "Ein Starship-Raumschiff trieb wochenlang im Ozean, bis die Firma SpaceX es mit einer improvisierten Rettungsaktion geborgen hat. Denn aus dem Wrack kann sie einiges lernen.",
-      "sourceId": "nzz",
-      "sourceName": "NZZ",
-      "topics": [
-        "goms"
-      ]
-    },
-    {
-      "title": "7 Franken pro Stück: Japanisches Brot erobert die Schweiz",
-      "link": "https://www.20min.ch/story/shokupan-hype-warum-das-japanische-milchbrot-die-schweiz-erobert-103621801",
-      "publishedAt": "2026-08-25T14:43:10.000Z",
-      "snippet": "Fluffig, milchig und leicht süss: Japanisches Weissbrot begeistert nicht nur im Fernen Osten, sondern auch hierzulande. Zürcher Bäckereien und Cafés verraten, was das Trendbrot so besonders macht und worauf es bei der Herstellung ankommt.",
-      "sourceId": "20min",
-      "sourceName": "20 Minuten",
-      "topics": [
-        "goms"
-      ]
-    }
-  ],
+  "articles": [],
   "summaries": {
     "gleitschirm": {
       "heute": {
@@ -173,12 +150,12 @@
       "gestern": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 1
+        "articleCount": 0
       },
       "diese_woche": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 2
+        "articleCount": 0
       },
       "letzte_woche": {
         "text": null,
@@ -188,7 +165,7 @@
       "letzte_30_tage": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 2
+        "articleCount": 0
       }
     }
   }
