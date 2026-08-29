@@ -205,17 +205,22 @@ async function main() {
     freshArticles.push(...result.items);
   }
 
-  const taggedFresh = freshArticles
-    .map((a) => ({ ...a, topics: tagTopics(a, topics) }))
-    .filter((a) => a.topics.length > 0);
-
-  // Mit Archiv zusammenführen (dedupe nach Link, neue Version gewinnt)
+  // Mit Archiv zusammenführen (dedupe nach Link, frischer Fetch überschreibt die
+  // gespeicherte Version desselben Links). Wichtig: Hier werden die *rohen*,
+  // noch nicht themen-gefilterten freshArticles verwendet — die Themen-Zuordnung
+  // erfolgt erst danach für den gesamten (alten + neuen) Bestand gemeinsam.
+  // Sonst würden Artikel, deren Tagging sich durch eine geänderte config/topics.json
+  // oder einen Bugfix im Matching ändert, nie neu bewertet, sobald sie aus dem
+  // Live-Feed der Quelle herausgefallen sind (dann kommt für sie nie wieder ein
+  // "frischer" getaggter Eintrag, der den alten überschreiben könnte).
   const byLink = new Map();
   for (const a of previous?.articles ?? []) byLink.set(a.link, a);
-  for (const a of taggedFresh) byLink.set(a.link, a);
+  for (const a of freshArticles) byLink.set(a.link, a);
 
   const cutoffISO = new Date(Date.now() - ARCHIVE_DAYS * 86400000).toISOString();
   const archive = [...byLink.values()]
+    .map((a) => ({ ...a, topics: tagTopics(a, topics) }))
+    .filter((a) => a.topics.length > 0)
     .filter((a) => a.publishedAt >= cutoffISO)
     .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1));
 
