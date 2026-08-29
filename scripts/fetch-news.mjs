@@ -60,9 +60,16 @@ async function fetchSource(source) {
     const feed = await parser.parseURL(source.rss);
     const items = (feed.items || [])
       .map((it) => {
-        const publishedAt =
-          it.isoDate || (it.pubDate ? new Date(it.pubDate).toISOString() : null);
-        if (!it.link || !publishedAt || Number.isNaN(Date.parse(publishedAt))) return null;
+        // Datum robust parsen: ein einzelnes Item mit unbrauchbarem Datum darf nicht
+        // die ganze Quelle zum Absturz bringen (new Date(...).toISOString() wirft bei
+        // ungültigem Datum eine Exception).
+        let publishedAt = null;
+        const candidate = it.isoDate || it.pubDate;
+        if (candidate) {
+          const parsed = new Date(candidate);
+          if (!Number.isNaN(parsed.getTime())) publishedAt = parsed.toISOString();
+        }
+        if (!it.link || !publishedAt) return null;
         return {
           title: (it.title || "(ohne Titel)").trim(),
           link: it.link,
@@ -86,10 +93,21 @@ async function fetchSource(source) {
 
 // ---------- Themen-Zuordnung ----------
 
+function escapeRegExp(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// Wortgrenzen-Match statt reinem Teilstring-Vergleich: verhindert Fehltreffer wie
+// das Stichwort "ernen" (Ort Ernen), das sonst auch in "lernen"/"Fernen" matchen würde.
+function keywordMatches(haystack, keyword) {
+  const pattern = new RegExp(`(?:^|[^a-zäöüß0-9])${escapeRegExp(keyword.toLowerCase())}(?:$|[^a-zäöüß0-9])`, "i");
+  return pattern.test(haystack);
+}
+
 function tagTopics(article, topics) {
-  const haystack = `${article.title} ${article.snippet}`.toLowerCase();
+  const haystack = ` ${article.title} ${article.snippet} `.toLowerCase();
   return topics
-    .filter((t) => t.keywords.some((k) => haystack.includes(k.toLowerCase())))
+    .filter((t) => t.keywords.some((k) => keywordMatches(haystack, k)))
     .map((t) => t.id);
 }
 

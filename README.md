@@ -68,14 +68,19 @@ automatischen Lauf warten (Standard: alle 4 Stunden).
 Nach einer Änderung reicht ein Commit — beim nächsten Workflow-Lauf werden die
 neuen Quellen/Themen automatisch verwendet.
 
-⚠️ **Hinweis zu den Standard-Feed-URLs:** Die in `config/sources.json` hinterlegten
-RSS-URLs (NZZ, FuW, 20 Minuten, Pomona) sind aus öffentlich bekannten/üblichen
-Feed-Mustern gesetzt, konnten aber aus der Entwicklungsumgebung heraus nicht live
-verifiziert werden (Netzwerksperre). **Nach dem ersten Workflow-Lauf unbedingt
-prüfen:** Im Actions-Log bzw. im `sources`-Abschnitt von `data/news.json` steht pro
-Quelle `status.ok` und ggf. eine Fehlermeldung. Eine nicht erreichbare Quelle
-blockiert die anderen nicht — einfach die `rss`-URL in `config/sources.json`
-korrigieren und neu committen.
+⚠️ **Status der Standard-Feed-URLs (Stand: erster echter Workflow-Lauf):**
+
+| Quelle | Status | Bemerkung |
+|---|---|---|
+| NZZ | ✅ funktioniert | `https://www.nzz.ch/recent.rss` liefert Artikel |
+| 20 Minuten | ✅ funktioniert | `https://partner-feeds.20min.ch/rss/20minuten` liefert Artikel |
+| Finanz und Wirtschaft | ❌ falsch | `https://www.fuw.ch/feed/` führt in eine Redirect-Schlaufe — die echte Feed-URL muss noch gefunden werden (z.B. direkt auf fuw.ch nach einem RSS-Symbol suchen) |
+| Pomona (Wallis) | ❌ falsch | `https://pomona.ch/rss` liefert kein gültiges XML — evtl. bietet Pomona gar kein öffentliches RSS an (App-fokussiertes Angebot); Alternative wäre ggf. ein RSS-Feed von Walliser Bote oder RRO direkt |
+
+Eine nicht erreichbare Quelle blockiert die anderen nicht (siehe `sources`-Abschnitt
+in `data/news.json` bzw. Actions-Log für den aktuellen Status). Sobald du eine
+korrekte Feed-URL für FuW/Pomona gefunden hast, einfach in `config/sources.json`
+eintragen und committen — beim nächsten Lauf wird sie automatisch verwendet.
 
 ## Lokal testen
 
