@@ -54,10 +54,22 @@ function weekdayIndexMon0(ymd) {
 // ---------- Quellen laden ----------
 
 const parser = new Parser({ timeout: 15000 });
+const SOURCE_HARD_TIMEOUT_MS = 20000;
+
+function withHardTimeout(promise, ms) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error(`Hard timeout nach ${ms}ms`)), ms)),
+  ]);
+}
 
 async function fetchSource(source) {
   try {
-    const feed = await parser.parseURL(source.rss);
+    // rss-parser's eigene "timeout"-Option greift nicht in jedem Fehlerfall
+    // (z.B. bei manchen Redirect-Schleifen oder hängenden Verbindungen) —
+    // deshalb zusätzlich ein harter Timeout, damit ein einzelner kaputter
+    // Feed nie den ganzen Workflow-Lauf blockieren kann.
+    const feed = await withHardTimeout(parser.parseURL(source.rss), SOURCE_HARD_TIMEOUT_MS);
     const items = (feed.items || [])
       .map((it) => {
         // Datum robust parsen: ein einzelnes Item mit unbrauchbarem Datum darf nicht
