@@ -9,10 +9,13 @@
 //   ANTHROPIC_API_KEY=sk-ant-... npm run fetch-news
 
 import Anthropic from "@anthropic-ai/sdk";
-import Parser from "rss-parser";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+
+const execFileAsync = promisify(execFile);
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
@@ -53,54 +56,63 @@ function weekdayIndexMon0(ymd) {
 
 // ---------- Quellen laden ----------
 
-const parser = new Parser({ timeout: 15000 });
+// Jede Quelle wird in einem eigenen Kindprozess geladen (siehe fetch-one-source.mjs)
+// und bekommt ein hartes Timeout mit SIGKILL. Ein reiner In-Process-Timeout
+// (Promise.race mit setTimeout) reicht NICHT: hängt der XML-Parser synchron
+// (z.B. bei kaputtem Markup), blockiert das den Event-Loop und selbst der
+// Timer feuert nie. Nur ein OS-Level-Kill des Kindprozesses garantiert die Grenze.
+const WORKER_PATH = path.join(HERE, "fetch-one-source.mjs");
 const SOURCE_HARD_TIMEOUT_MS = 20000;
 
-function withHardTimeout(promise, ms) {
-  return Promise.race([
-    promise,
-    new Promise((_, reject) => setTimeout(() => reject(new Error(`Hard timeout nach ${ms}ms`)), ms)),
-  ]);
-}
-
 async function fetchSource(source) {
+  let raw;
   try {
-    // rss-parser's eigene "timeout"-Option greift nicht in jedem Fehlerfall
-    // (z.B. bei manchen Redirect-Schleifen oder hängenden Verbindungen) —
-    // deshalb zusätzlich ein harter Timeout, damit ein einzelner kaputter
-    // Feed nie den ganzen Workflow-Lauf blockieren kann.
-    const feed = await withHardTimeout(parser.parseURL(source.rss), SOURCE_HARD_TIMEOUT_MS);
-    const items = (feed.items || [])
-      .map((it) => {
-        // Datum robust parsen: ein einzelnes Item mit unbrauchbarem Datum darf nicht
-        // die ganze Quelle zum Absturz bringen (new Date(...).toISOString() wirft bei
-        // ungültigem Datum eine Exception).
-        let publishedAt = null;
-        const candidate = it.isoDate || it.pubDate;
-        if (candidate) {
-          const parsed = new Date(candidate);
-          if (!Number.isNaN(parsed.getTime())) publishedAt = parsed.toISOString();
-        }
-        if (!it.link || !publishedAt) return null;
-        return {
-          title: (it.title || "(ohne Titel)").trim(),
-          link: it.link,
-          publishedAt,
-          snippet: (it.contentSnippet || it.summary || "")
-            .replace(/\s+/g, " ")
-            .trim()
-            .slice(0, 400),
-          sourceId: source.id,
-          sourceName: source.name,
-        };
-      })
-      .filter(Boolean);
-    console.log(`[ok] ${source.name}: ${items.length} Artikel geladen`);
-    return { ok: true, items };
+    const { stdout } = await execFileAsync(
+      process.execPath,
+      [WORKER_PATH, JSON.stringify(source)],
+      { timeout: SOURCE_HARD_TIMEOUT_MS, killSignal: "SIGKILL", maxBuffer: 10 * 1024 * 1024 },
+    );
+    raw = JSON.parse(stdout);
   } catch (err) {
-    console.warn(`[warn] Quelle "${source.name}" (${source.rss}) fehlgeschlagen: ${err.message}`);
-    return { ok: false, error: err.message, items: [] };
+    const reason = err.killed
+      ? `Hard timeout nach ${SOURCE_HARD_TIMEOUT_MS}ms (Prozess beendet)`
+      : err.message;
+    console.warn(`[warn] Quelle "${source.name}" (${source.rss}) fehlgeschlagen: ${reason}`);
+    return { ok: false, error: reason, items: [] };
   }
+
+  if (!raw.ok) {
+    console.warn(`[warn] Quelle "${source.name}" (${source.rss}) fehlgeschlagen: ${raw.error}`);
+    return { ok: false, error: raw.error, items: [] };
+  }
+
+  const items = raw.items
+    .map((it) => {
+      // Datum robust parsen: ein einzelnes Item mit unbrauchbarem Datum darf nicht
+      // die ganze Quelle zum Absturz bringen (new Date(...).toISOString() wirft bei
+      // ungültigem Datum eine Exception).
+      let publishedAt = null;
+      const candidate = it.isoDate || it.pubDate;
+      if (candidate) {
+        const parsed = new Date(candidate);
+        if (!Number.isNaN(parsed.getTime())) publishedAt = parsed.toISOString();
+      }
+      if (!it.link || !publishedAt) return null;
+      return {
+        title: (it.title || "(ohne Titel)").trim(),
+        link: it.link,
+        publishedAt,
+        snippet: (it.contentSnippet || it.summary || "")
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, 400),
+        sourceId: source.id,
+        sourceName: source.name,
+      };
+    })
+    .filter(Boolean);
+  console.log(`[ok] ${source.name}: ${items.length} Artikel geladen`);
+  return { ok: true, items };
 }
 
 // ---------- Themen-Zuordnung ----------
