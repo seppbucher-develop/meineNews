@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T08:03:50.541Z",
+  "generatedAt": "2026-08-29T12:03:55.034Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -11,7 +11,7 @@
         "ok": true,
         "error": null,
         "itemCount": 16,
-        "checkedAt": "2026-08-29T08:03:47.994Z"
+        "checkedAt": "2026-08-29T12:03:52.877Z"
       }
     },
     {
@@ -22,7 +22,7 @@
         "ok": false,
         "error": "Too many redirects",
         "itemCount": 0,
-        "checkedAt": "2026-08-29T08:03:49.043Z"
+        "checkedAt": "2026-08-29T12:03:53.852Z"
       }
     },
     {
@@ -32,8 +32,8 @@
       "status": {
         "ok": true,
         "error": null,
-        "itemCount": 112,
-        "checkedAt": "2026-08-29T08:03:49.998Z"
+        "itemCount": 110,
+        "checkedAt": "2026-08-29T12:03:54.431Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-08-29T08:03:50.536Z"
+        "checkedAt": "2026-08-29T12:03:55.029Z"
       }
     }
   ],
