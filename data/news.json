@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T20:04:08.054Z",
+  "generatedAt": "2026-08-31T00:04:40.257Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -11,7 +11,7 @@
         "ok": true,
         "error": null,
         "itemCount": 16,
-        "checkedAt": "2026-08-30T20:03:46.385Z"
+        "checkedAt": "2026-08-31T00:04:18.509Z"
       }
     },
     {
@@ -22,7 +22,7 @@
         "ok": false,
         "error": "Hard timeout nach 20000ms (Prozess beendet)",
         "itemCount": 0,
-        "checkedAt": "2026-08-30T20:04:06.390Z"
+        "checkedAt": "2026-08-31T00:04:38.514Z"
       }
     },
     {
@@ -32,8 +32,8 @@
       "status": {
         "ok": true,
         "error": null,
-        "itemCount": 109,
-        "checkedAt": "2026-08-30T20:04:07.394Z"
+        "itemCount": 110,
+        "checkedAt": "2026-08-31T00:04:39.553Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-08-30T20:04:08.047Z"
+        "checkedAt": "2026-08-31T00:04:40.250Z"
       }
     }
   ],
@@ -84,32 +84,32 @@
     {
       "id": "heute",
       "label": "Heute",
-      "from": "2026-08-30",
-      "to": "2026-08-30"
+      "from": "2026-08-31",
+      "to": "2026-08-31"
     },
     {
       "id": "gestern",
       "label": "Gestern",
-      "from": "2026-08-29",
-      "to": "2026-08-29"
+      "from": "2026-08-30",
+      "to": "2026-08-30"
     },
     {
       "id": "diese_woche",
       "label": "Diese Woche",
-      "from": "2026-08-24",
-      "to": "2026-08-30"
+      "from": "2026-08-31",
+      "to": "2026-08-31"
     },
     {
       "id": "letzte_woche",
       "label": "Letzte Woche",
-      "from": "2026-08-17",
-      "to": "2026-08-23"
+      "from": "2026-08-24",
+      "to": "2026-08-30"
     },
     {
       "id": "letzte_30_tage",
       "label": "Letzte 30 Tage",
-      "from": "2026-08-01",
-      "to": "2026-08-30"
+      "from": "2026-08-02",
+      "to": "2026-08-31"
     }
   ],
   "articles": [],
