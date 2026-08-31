@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T08:04:16.924Z",
+  "generatedAt": "2026-08-31T12:04:23.131Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -10,8 +10,8 @@
       "status": {
         "ok": true,
         "error": null,
-        "itemCount": 16,
-        "checkedAt": "2026-08-31T08:03:54.784Z"
+        "itemCount": 15,
+        "checkedAt": "2026-08-31T12:04:01.777Z"
       }
     },
     {
@@ -22,7 +22,7 @@
         "ok": false,
         "error": "Hard timeout nach 20000ms (Prozess beendet)",
         "itemCount": 0,
-        "checkedAt": "2026-08-31T08:04:14.788Z"
+        "checkedAt": "2026-08-31T12:04:21.781Z"
       }
     },
     {
@@ -32,8 +32,8 @@
       "status": {
         "ok": true,
         "error": null,
-        "itemCount": 110,
-        "checkedAt": "2026-08-31T08:04:16.079Z"
+        "itemCount": 113,
+        "checkedAt": "2026-08-31T12:04:22.503Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-08-31T08:04:16.917Z"
+        "checkedAt": "2026-08-31T12:04:23.125Z"
       }
     }
   ],
