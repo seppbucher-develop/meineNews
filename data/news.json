@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T20:06:39.814Z",
+  "generatedAt": "2026-09-03T00:10:27.389Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -11,7 +11,7 @@
         "ok": true,
         "error": null,
         "itemCount": 16,
-        "checkedAt": "2026-09-02T20:06:18.257Z"
+        "checkedAt": "2026-09-03T00:10:06.363Z"
       }
     },
     {
@@ -22,7 +22,7 @@
         "ok": false,
         "error": "Hard timeout nach 20000ms (Prozess beendet)",
         "itemCount": 0,
-        "checkedAt": "2026-09-02T20:06:38.263Z"
+        "checkedAt": "2026-09-03T00:10:26.368Z"
       }
     },
     {
@@ -33,7 +33,7 @@
         "ok": true,
         "error": null,
         "itemCount": 110,
-        "checkedAt": "2026-09-02T20:06:39.088Z"
+        "checkedAt": "2026-09-03T00:10:26.841Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-09-02T20:06:39.807Z"
+        "checkedAt": "2026-09-03T00:10:27.385Z"
       }
     }
   ],
@@ -84,20 +84,20 @@
     {
       "id": "heute",
       "label": "Heute",
-      "from": "2026-09-02",
-      "to": "2026-09-02"
+      "from": "2026-09-03",
+      "to": "2026-09-03"
     },
     {
       "id": "gestern",
       "label": "Gestern",
-      "from": "2026-09-01",
-      "to": "2026-09-01"
+      "from": "2026-09-02",
+      "to": "2026-09-02"
     },
     {
       "id": "diese_woche",
       "label": "Diese Woche",
       "from": "2026-08-31",
-      "to": "2026-09-02"
+      "to": "2026-09-03"
     },
     {
       "id": "letzte_woche",
@@ -108,8 +108,8 @@
     {
       "id": "letzte_30_tage",
       "label": "Letzte 30 Tage",
-      "from": "2026-08-04",
-      "to": "2026-09-02"
+      "from": "2026-08-05",
+      "to": "2026-09-03"
     }
   ],
   "articles": [],
