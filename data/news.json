@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T20:06:18.974Z",
+  "generatedAt": "2026-09-04T00:13:21.341Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -11,7 +11,7 @@
         "ok": true,
         "error": null,
         "itemCount": 16,
-        "checkedAt": "2026-09-03T20:05:57.212Z"
+        "checkedAt": "2026-09-04T00:13:00.101Z"
       }
     },
     {
@@ -22,7 +22,7 @@
         "ok": false,
         "error": "Hard timeout nach 20000ms (Prozess beendet)",
         "itemCount": 0,
-        "checkedAt": "2026-09-03T20:06:17.216Z"
+        "checkedAt": "2026-09-04T00:13:20.105Z"
       }
     },
     {
@@ -33,7 +33,7 @@
         "ok": true,
         "error": null,
         "itemCount": 111,
-        "checkedAt": "2026-09-03T20:06:18.359Z"
+        "checkedAt": "2026-09-04T00:13:20.727Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-09-03T20:06:18.968Z"
+        "checkedAt": "2026-09-04T00:13:21.334Z"
       }
     }
   ],
@@ -84,20 +84,20 @@
     {
       "id": "heute",
       "label": "Heute",
-      "from": "2026-09-03",
-      "to": "2026-09-03"
+      "from": "2026-09-04",
+      "to": "2026-09-04"
     },
     {
       "id": "gestern",
       "label": "Gestern",
-      "from": "2026-09-02",
-      "to": "2026-09-02"
+      "from": "2026-09-03",
+      "to": "2026-09-03"
     },
     {
       "id": "diese_woche",
       "label": "Diese Woche",
       "from": "2026-08-31",
-      "to": "2026-09-03"
+      "to": "2026-09-04"
     },
     {
       "id": "letzte_woche",
@@ -108,8 +108,8 @@
     {
       "id": "letzte_30_tage",
       "label": "Letzte 30 Tage",
-      "from": "2026-08-05",
-      "to": "2026-09-03"
+      "from": "2026-08-06",
+      "to": "2026-09-04"
     }
   ],
   "articles": [
@@ -130,12 +130,12 @@
       "heute": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 1
+        "articleCount": 0
       },
       "gestern": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 0
+        "articleCount": 1
       },
       "diese_woche": {
         "text": null,
