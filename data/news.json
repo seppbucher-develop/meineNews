@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T08:07:49.229Z",
+  "generatedAt": "2026-09-07T12:08:38.565Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -8,10 +8,10 @@
       "name": "NZZ",
       "rss": "https://www.nzz.ch/recent.rss",
       "status": {
-        "ok": false,
-        "error": "Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: [",
-        "itemCount": 0,
-        "checkedAt": "2026-09-07T08:07:27.651Z"
+        "ok": true,
+        "error": null,
+        "itemCount": 15,
+        "checkedAt": "2026-09-07T12:08:16.361Z"
       }
     },
     {
@@ -22,7 +22,7 @@
         "ok": false,
         "error": "Hard timeout nach 20000ms (Prozess beendet)",
         "itemCount": 0,
-        "checkedAt": "2026-09-07T08:07:47.656Z"
+        "checkedAt": "2026-09-07T12:08:36.364Z"
       }
     },
     {
@@ -32,8 +32,8 @@
       "status": {
         "ok": true,
         "error": null,
-        "itemCount": 110,
-        "checkedAt": "2026-09-07T08:07:48.624Z"
+        "itemCount": 111,
+        "checkedAt": "2026-09-07T12:08:37.864Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-09-07T08:07:49.223Z"
+        "checkedAt": "2026-09-07T12:08:38.559Z"
       }
     }
   ],
