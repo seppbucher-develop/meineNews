@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T20:06:26.463Z",
+  "generatedAt": "2026-09-07T00:10:17.604Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -10,8 +10,8 @@
       "status": {
         "ok": true,
         "error": null,
-        "itemCount": 14,
-        "checkedAt": "2026-09-06T20:06:04.906Z"
+        "itemCount": 13,
+        "checkedAt": "2026-09-07T00:09:56.166Z"
       }
     },
     {
@@ -22,7 +22,7 @@
         "ok": false,
         "error": "Hard timeout nach 20000ms (Prozess beendet)",
         "itemCount": 0,
-        "checkedAt": "2026-09-06T20:06:24.911Z"
+        "checkedAt": "2026-09-07T00:10:16.169Z"
       }
     },
     {
@@ -32,8 +32,8 @@
       "status": {
         "ok": true,
         "error": null,
-        "itemCount": 110,
-        "checkedAt": "2026-09-06T20:06:25.873Z"
+        "itemCount": 109,
+        "checkedAt": "2026-09-07T00:10:16.874Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-09-06T20:06:26.456Z"
+        "checkedAt": "2026-09-07T00:10:17.598Z"
       }
     }
   ],
@@ -84,32 +84,32 @@
     {
       "id": "heute",
       "label": "Heute",
-      "from": "2026-09-06",
-      "to": "2026-09-06"
+      "from": "2026-09-07",
+      "to": "2026-09-07"
     },
     {
       "id": "gestern",
       "label": "Gestern",
-      "from": "2026-09-05",
-      "to": "2026-09-05"
+      "from": "2026-09-06",
+      "to": "2026-09-06"
     },
     {
       "id": "diese_woche",
       "label": "Diese Woche",
-      "from": "2026-08-31",
-      "to": "2026-09-06"
+      "from": "2026-09-07",
+      "to": "2026-09-07"
     },
     {
       "id": "letzte_woche",
       "label": "Letzte Woche",
-      "from": "2026-08-24",
-      "to": "2026-08-30"
+      "from": "2026-08-31",
+      "to": "2026-09-06"
     },
     {
       "id": "letzte_30_tage",
       "label": "Letzte 30 Tage",
-      "from": "2026-08-08",
-      "to": "2026-09-06"
+      "from": "2026-08-09",
+      "to": "2026-09-07"
     }
   ],
   "articles": [
@@ -140,12 +140,12 @@
       "diese_woche": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 1
+        "articleCount": 0
       },
       "letzte_woche": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 0
+        "articleCount": 1
       },
       "letzte_30_tage": {
         "text": null,
