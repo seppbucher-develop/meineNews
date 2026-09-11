@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T15:40:49.449Z",
+  "generatedAt": "2026-09-11T18:54:55.192Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -11,7 +11,7 @@
         "ok": true,
         "error": null,
         "itemCount": 16,
-        "checkedAt": "2026-09-11T15:40:27.482Z"
+        "checkedAt": "2026-09-11T18:54:33.620Z"
       }
     },
     {
@@ -22,7 +22,7 @@
         "ok": false,
         "error": "Hard timeout nach 20000ms (Prozess beendet)",
         "itemCount": 0,
-        "checkedAt": "2026-09-11T15:40:47.485Z"
+        "checkedAt": "2026-09-11T18:54:53.624Z"
       }
     },
     {
@@ -32,8 +32,8 @@
       "status": {
         "ok": true,
         "error": null,
-        "itemCount": 112,
-        "checkedAt": "2026-09-11T15:40:48.747Z"
+        "itemCount": 113,
+        "checkedAt": "2026-09-11T18:54:54.742Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-09-11T15:40:49.442Z"
+        "checkedAt": "2026-09-11T18:54:55.186Z"
       }
     }
   ],
@@ -114,6 +114,17 @@
   ],
   "articles": [
     {
+      "title": "Unbekannte spannen Leine über Landeplatz: Fast kommts zum Unfall",
+      "link": "https://www.20min.ch/story/stechelberg-be-unbekannte-spannen-leine-ueber-landeplatz-fast-kommts-zum-unfall-103631674",
+      "publishedAt": "2026-09-11T18:30:21.000Z",
+      "snippet": "Beim Gleitschirm-Landeplatz in Stechelberg kam es zu einer heiklen Situation: Jemand spannte eine Nylonschnur übers Gelände. Wie durch ein Wunder wurde niemand verletzt.",
+      "sourceId": "20min",
+      "sourceName": "20 Minuten",
+      "topics": [
+        "gleitschirm"
+      ]
+    },
+    {
       "title": "Schweizer Gleitschirmpilot umfliegt Landwasserviadukt im Slalom",
       "link": "https://www.20min.ch/video/weltpremiere-geglueckt-schweizer-gleitschirmpilot-umfliegt-landwasserviadukt-im-slalom-103626503",
       "publishedAt": "2026-09-03T02:29:45.000Z",
@@ -130,7 +141,7 @@
       "heute": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 0
+        "articleCount": 1
       },
       "gestern": {
         "text": null,
@@ -140,7 +151,7 @@
       "diese_woche": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 0
+        "articleCount": 1
       },
       "letzte_woche": {
         "text": null,
@@ -150,7 +161,7 @@
       "letzte_30_tage": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 1
+        "articleCount": 2
       }
     },
     "goms": {
