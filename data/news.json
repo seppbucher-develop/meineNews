@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T21:52:51.544Z",
+  "generatedAt": "2026-09-13T02:34:07.639Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -11,7 +11,7 @@
         "ok": true,
         "error": null,
         "itemCount": 16,
-        "checkedAt": "2026-09-12T21:52:29.464Z"
+        "checkedAt": "2026-09-13T02:33:46.252Z"
       }
     },
     {
@@ -22,7 +22,7 @@
         "ok": false,
         "error": "Hard timeout nach 20000ms (Prozess beendet)",
         "itemCount": 0,
-        "checkedAt": "2026-09-12T21:52:49.468Z"
+        "checkedAt": "2026-09-13T02:34:06.257Z"
       }
     },
     {
@@ -32,8 +32,8 @@
       "status": {
         "ok": true,
         "error": null,
-        "itemCount": 110,
-        "checkedAt": "2026-09-12T21:52:50.894Z"
+        "itemCount": 111,
+        "checkedAt": "2026-09-13T02:34:07.029Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-09-12T21:52:51.538Z"
+        "checkedAt": "2026-09-13T02:34:07.632Z"
       }
     }
   ],
@@ -84,20 +84,20 @@
     {
       "id": "heute",
       "label": "Heute",
-      "from": "2026-09-12",
-      "to": "2026-09-12"
+      "from": "2026-09-13",
+      "to": "2026-09-13"
     },
     {
       "id": "gestern",
       "label": "Gestern",
-      "from": "2026-09-11",
-      "to": "2026-09-11"
+      "from": "2026-09-12",
+      "to": "2026-09-12"
     },
     {
       "id": "diese_woche",
       "label": "Diese Woche",
       "from": "2026-09-07",
-      "to": "2026-09-12"
+      "to": "2026-09-13"
     },
     {
       "id": "letzte_woche",
@@ -108,8 +108,8 @@
     {
       "id": "letzte_30_tage",
       "label": "Letzte 30 Tage",
-      "from": "2026-08-14",
-      "to": "2026-09-12"
+      "from": "2026-08-15",
+      "to": "2026-09-13"
     }
   ],
   "articles": [
@@ -146,7 +146,7 @@
       "gestern": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 1
+        "articleCount": 0
       },
       "diese_woche": {
         "text": null,
