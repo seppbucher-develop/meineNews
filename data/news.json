@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-13T18:28:16.953Z",
+  "generatedAt": "2026-09-13T22:00:18.272Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -11,7 +11,7 @@
         "ok": true,
         "error": null,
         "itemCount": 16,
-        "checkedAt": "2026-09-13T18:27:55.435Z"
+        "checkedAt": "2026-09-13T21:59:56.548Z"
       }
     },
     {
@@ -22,7 +22,7 @@
         "ok": false,
         "error": "Hard timeout nach 20000ms (Prozess beendet)",
         "itemCount": 0,
-        "checkedAt": "2026-09-13T18:28:15.439Z"
+        "checkedAt": "2026-09-13T22:00:16.553Z"
       }
     },
     {
@@ -33,7 +33,7 @@
         "ok": true,
         "error": null,
         "itemCount": 110,
-        "checkedAt": "2026-09-13T18:28:16.184Z"
+        "checkedAt": "2026-09-13T22:00:17.666Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-09-13T18:28:16.946Z"
+        "checkedAt": "2026-09-13T22:00:18.265Z"
       }
     }
   ],
@@ -84,32 +84,32 @@
     {
       "id": "heute",
       "label": "Heute",
-      "from": "2026-09-13",
-      "to": "2026-09-13"
+      "from": "2026-09-14",
+      "to": "2026-09-14"
     },
     {
       "id": "gestern",
       "label": "Gestern",
-      "from": "2026-09-12",
-      "to": "2026-09-12"
+      "from": "2026-09-13",
+      "to": "2026-09-13"
     },
     {
       "id": "diese_woche",
       "label": "Diese Woche",
-      "from": "2026-09-07",
-      "to": "2026-09-13"
+      "from": "2026-09-14",
+      "to": "2026-09-14"
     },
     {
       "id": "letzte_woche",
       "label": "Letzte Woche",
-      "from": "2026-08-31",
-      "to": "2026-09-06"
+      "from": "2026-09-07",
+      "to": "2026-09-13"
     },
     {
       "id": "letzte_30_tage",
       "label": "Letzte 30 Tage",
-      "from": "2026-08-15",
-      "to": "2026-09-13"
+      "from": "2026-08-16",
+      "to": "2026-09-14"
     }
   ],
   "articles": [
@@ -151,7 +151,7 @@
       "diese_woche": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 1
+        "articleCount": 0
       },
       "letzte_woche": {
         "text": null,
