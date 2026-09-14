@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T09:27:48.617Z",
+  "generatedAt": "2026-09-14T17:23:46.288Z",
   "timezone": "Europe/Zurich",
   "archiveDays": 90,
   "sources": [
@@ -11,7 +11,7 @@
         "ok": true,
         "error": null,
         "itemCount": 16,
-        "checkedAt": "2026-09-14T09:27:27.292Z"
+        "checkedAt": "2026-09-14T17:23:24.067Z"
       }
     },
     {
@@ -22,7 +22,7 @@
         "ok": false,
         "error": "Hard timeout nach 20000ms (Prozess beendet)",
         "itemCount": 0,
-        "checkedAt": "2026-09-14T09:27:47.297Z"
+        "checkedAt": "2026-09-14T17:23:44.071Z"
       }
     },
     {
@@ -32,8 +32,8 @@
       "status": {
         "ok": true,
         "error": null,
-        "itemCount": 110,
-        "checkedAt": "2026-09-14T09:27:47.806Z"
+        "itemCount": 113,
+        "checkedAt": "2026-09-14T17:23:45.188Z"
       }
     },
     {
@@ -44,7 +44,7 @@
         "ok": false,
         "error": "Attribute without value\nLine: 1\nColumn: 30\nChar: >",
         "itemCount": 0,
-        "checkedAt": "2026-09-14T09:27:48.610Z"
+        "checkedAt": "2026-09-14T17:23:46.281Z"
       }
     }
   ],
@@ -114,6 +114,17 @@
   ],
   "articles": [
     {
+      "title": "Falle für Gleitschirmflieger und Basejumper im Lauterbrunnental: Unbekannte spannen Nylonfäden über Landeplatz",
+      "link": "https://www.nzz.ch/panorama/falle-fuer-gleitschirmflieger-und-basejumper-im-lauterbrunnental-unbekannter-spannt-nylonfaeden-ueber-landeplatz-ld.10023642",
+      "publishedAt": "2026-09-14T14:04:36.000Z",
+      "snippet": "Auf dem beliebten Landeplatz in Stechelberg sind unsichtbare Schnüre aufgetaucht. Ein Gleitschirmpilot kommt mit dem Schrecken davon und warnt die Szene.",
+      "sourceId": "nzz",
+      "sourceName": "NZZ",
+      "topics": [
+        "gleitschirm"
+      ]
+    },
+    {
       "title": "Unbekannte spannen Leine über Landeplatz: Fast kommts zum Unfall",
       "link": "https://www.20min.ch/story/stechelberg-be-unbekannte-spannen-leine-ueber-landeplatz-fast-kommts-zum-unfall-103631674",
       "publishedAt": "2026-09-11T18:30:21.000Z",
@@ -141,7 +152,7 @@
       "heute": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 0
+        "articleCount": 1
       },
       "gestern": {
         "text": null,
@@ -151,7 +162,7 @@
       "diese_woche": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 0
+        "articleCount": 1
       },
       "letzte_woche": {
         "text": null,
@@ -161,7 +172,7 @@
       "letzte_30_tage": {
         "text": null,
         "reason": "kein ANTHROPIC_API_KEY hinterlegt",
-        "articleCount": 2
+        "articleCount": 3
       }
     },
     "goms": {
